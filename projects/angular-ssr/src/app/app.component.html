@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let image of images | async" class="col-12 col-md-3">
+      <img [id]="image.id" class="img-fluid" [src]="image.download_url">
+    </div>
+  </div>
+</div>
