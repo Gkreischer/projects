@@ -1,7 +1,29 @@
-<div class="container">
+<div class="container p-5">
   <div class="row">
-    <div *ngFor="let image of images | async" class="col-12 col-md-3">
-      <img [id]="image.id" class="img-fluid" [src]="image.download_url">
+    <div *ngFor="let image of images | async; trackByImage: " class="col-12 col-md-3">
+      <div class="card m-1">
+        <img loading="lazy" [id]="image.id" class="img-fluid" [src]="image.download_url">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col justify-content-center">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous" (click)="previousPage()">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">{{pageNumber}}</a></li>
+          
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next" (click)="nextPage()">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </div>
