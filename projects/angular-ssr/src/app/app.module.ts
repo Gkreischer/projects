@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 
 import {provideClientHydration} from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { ShowImageComponent } from './components/show-image/show-image.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShowImageComponent
   ],
   imports: [
     BrowserModule,

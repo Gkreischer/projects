@@ -1,25 +1,41 @@
 <div class="container p-5">
   <div class="row">
-    <div *ngFor="let image of images | async; trackByImage: " class="col-12 col-md-3">
-      <div class="card m-1">
-        <img loading="lazy" [id]="image.id" class="img-fluid" [src]="image.download_url">
+    <div *ngFor="let image of images | async; trackBy: trackByImage " class="col-12 col-md-3">
+      <div class="card m-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img loading="lazy" [id]="image.id" class="img-fluid rounded-top" [src]="image.download_url" (click)="showImageDetails(image)">
+        <div class="card-content p-3">
+          <div class="container text-center">
+            
+            <div class="row">
+              <div class="col">
+                <p class="mb-0">{{image.author}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p class="mb-0"><strong><i class="bi bi-person-fill"></i>Autor</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col justify-content-center">
       <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
+        <ul class="pagination justify-content-center mt-5">
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Previous" (click)="previousPage()">
-              <span aria-hidden="true">&laquo;</span>
+              <span aria-hidden="true"><i class="bi bi-arrow-left"></i></span>
             </a>
           </li>
-          <li class="page-item"><a class="page-link" href="#">{{pageNumber}}</a></li>
-          
+          <li *ngIf="pageNumber > 1" class="page-item"><a class="page-link" href="#" (click)="previousPage()">{{pageNumber - 1}}</a></li>
+          <li class="page-item"><a class="page-link" href="#"><strong>{{pageNumber}}</strong></a></li>
+          <li class="page-item"><a class="page-link" href="#" (click)="nextPage()">{{pageNumber + 1}}</a></li>
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Next" (click)="nextPage()">
-              <span aria-hidden="true">&raquo;</span>
+              <span aria-hidden="true"><i class="bi bi-arrow-right"></i></span>
             </a>
           </li>
         </ul>
@@ -27,3 +43,6 @@
     </div>
   </div>
 </div>
+
+<!-- Modal -->
+<app-show-image [image]="currentImage"></app-show-image>

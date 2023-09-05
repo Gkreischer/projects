@@ -1,3 +1,5 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 body {
     background: linear-gradient(271deg, #070707, #ffffff);
     background-size: 400% 400%;
@@ -5,6 +7,7 @@ body {
     -webkit-animation: AnimationName 30s ease infinite;
     -moz-animation: AnimationName 30s ease infinite;
     animation: AnimationName 30s ease infinite;
+    font-family: 'Roboto', sans-serif;
 }
 
 @-webkit-keyframes AnimationName {

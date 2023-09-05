@@ -10,9 +10,12 @@ import { Image } from './_models/Image';
 })
 export class AppComponent implements OnInit {
 
+  title = 'angular-ssr';
 
   images!: Observable<Image[]>;
   pageNumber: number = 1;
+
+  currentImage!: Image;
 
   constructor(private serviceImages: ImagesService) {
 
@@ -20,6 +23,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.getImages();
+  }
+
+  showImageDetails(image: Image) {
+    this.currentImage = image;
   }
 
   getImages() {
@@ -50,6 +57,4 @@ export class AppComponent implements OnInit {
   trackByImage(index: number, image: Image) {
     return image.id;
   }
-
-  title = 'angular-ssr';
 }
